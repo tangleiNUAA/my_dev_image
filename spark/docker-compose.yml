@@ -1,0 +1,23 @@
+version: "3"
+services:
+  # start spark master
+  master:
+    image: vidi0312/spark:2.3.1
+    ports: 
+      - "8080:8080"
+      - "7077:7077"
+    hostname: master
+    entrypoint:
+      spark-class
+      org.apache.spark.deploy.master.Master
+  
+  worker:
+    # start spark worker
+    image: vidi0312/spark:2.3.1
+    ports:
+      - "8081:8081"
+    hostname: worker
+    entrypoint:
+      spark-class
+      org.apache.spark.deploy.worker.Worker 
+      spark://master:7077
