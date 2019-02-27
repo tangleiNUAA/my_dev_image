@@ -1,0 +1,10 @@
+version: "3.3"
+services:
+  cerebro:
+    image: yannart/cerebro:0.8.1
+    container_name: cerebro
+    ports:
+        - 9001:9000
+    hostname: cerebro
+    volumes:
+        - ./conf:/opt/cerebro/conf
