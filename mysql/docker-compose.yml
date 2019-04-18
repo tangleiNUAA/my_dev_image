@@ -1,0 +1,20 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: on-failure
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    volumes:
+      - /my/own/datadir:/var/lib/mysql
+      - data:/var/lib/mysql
+    command: [
+      "--log-bin=mysql-bin",
+      "--server-id=1"
+    ]
+
+volumes:
+  data:
